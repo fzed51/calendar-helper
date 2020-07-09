@@ -13,19 +13,7 @@ namespace CalendarHelper;
  */
 class Calendar
 {
-    /**
-     * Determines whether the argument passed in the parameter is an integer or an object with a
-     * DateTimeInterface interface
-     * @param $arg
-     * @return bool
-     */
-    protected static function isIntOrDateTimeInterface($arg): bool
-    {
-        if (is_int($arg) || is_a($arg, \DateTimeInterface::class)) {
-            return true;
-        }
-        return false;
-    }
+    use isValidType;
 
     /**
      * Determine if a year is bisextile
@@ -45,5 +33,39 @@ class Calendar
             $year = (int)$year->format("Y");
         }
         return ((($year % 4) === 0) && (($year % 100) !== 0)) || (($year % 400) === 0);
+    }
+
+    public static function numberOfDays($year, int $month = null): int
+    {
+        if (!self::isIntOrDateTimeInterface($year)) {
+            throw new \InvalidArgumentException(
+                'the 1st argument passed to the method '
+                . __METHOD__
+                . ' must be of type int or \DateTimeInterface'
+            );
+        }
+        if (is_a($year, \DateTimeInterface::class)) {
+            $month = (int)$year->format("m");
+            $year = (int)$year->format("Y");
+        }
+        switch ($month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                return 31;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            case 2:
+                return self::isBisextile($year) ? 29 : 28;
+            default:
+                throw new \InvalidArgumentException("the 2nd argument passed to the method is not a valid month");
+        }
     }
 }
