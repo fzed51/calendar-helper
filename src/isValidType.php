@@ -3,7 +3,6 @@
 
 namespace CalendarHelper;
 
-
 trait isValidType
 {
     /**
