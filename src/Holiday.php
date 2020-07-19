@@ -14,9 +14,12 @@ use DateTimeImmutable;
  */
 class Holiday
 {
-    use isValidType;
+    use IsValidType;
 
-// Jour de l'an : mercredi 1er janvier 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function newYearsDay($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -32,7 +35,10 @@ class Holiday
         return new DateTimeImmutable("$year-01-01");
     }
 
-// Lundi de Pâques : lundi 13 avril 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function easterDay($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -63,12 +69,19 @@ class Holiday
         return $easterDay->setDate($year, $m, $j + 1)->setTime(0, 0);
     }
 
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function easterMonday($year): DateTimeImmutable
     {
         return self::easterDay($year)->add(new \DateInterval('P1D'));
     }
 
-// Fête du Travail : vendredi 1er mai 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function mayDay($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -84,7 +97,10 @@ class Holiday
         return new DateTimeImmutable("$year-05-01");
     }
 
-// Fête de la Victoire de 1945 : vendredi 8 mai 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function armisticeDe1945($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -100,7 +116,10 @@ class Holiday
         return new DateTimeImmutable("$year-05-08");
     }
 
-// Jeudi de l'Ascension : jeudi 21 mai 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function ascension($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -116,7 +135,10 @@ class Holiday
         return self::easterDay($year)->modify('+39 days');
     }
 
-// Lundi de Pentecôte : lundi 1er juin 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function pentecote($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -132,6 +154,10 @@ class Holiday
         return self::easterDay($year)->modify('+49 days');
     }
 
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function lundiDePentecote($year): DateTimeImmutable
     {
 
@@ -148,7 +174,10 @@ class Holiday
         return self::easterDay($year)->modify('+50 days');
     }
 
-// Fête nationale : mardi 14 juillet 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function bastilleDay($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -164,7 +193,10 @@ class Holiday
         return new DateTimeImmutable("$year-07-14");
     }
 
-// Assomption : samedi 15 août 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function assomption($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -180,7 +212,10 @@ class Holiday
         return new DateTimeImmutable("$year-08-15");
     }
 
-// Toussaint : dimanche 1er novembre 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function tousSaint($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -196,7 +231,10 @@ class Holiday
         return new DateTimeImmutable("$year-11-01");
     }
 
-// Armistice de 1918 : mercredi 11 novembre 2020
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function armisticeDe1918($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -212,7 +250,10 @@ class Holiday
         return new DateTimeImmutable("$year-11-11");
     }
 
-// Noël : vendredi 25 décembre 2020.
+    /**
+     * @param int|\DateTimeInterface $year
+     * @return \DateTimeImmutable
+     */
     public static function christmasDay($year)
     {
         if (!self::isIntOrDateTimeInterface($year)) {

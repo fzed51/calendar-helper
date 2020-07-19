@@ -7,7 +7,11 @@ use PHPUnit\Framework\TestCase;
 
 class HolidayTest extends TestCase
 {
-
+    /**
+     * @param string $expect
+     * @param \DateTimeInterface $actual
+     * @param string $message
+     */
     protected static function assertDateEquals(string $expect, \DateTimeInterface $actual, string $message = ''): void
     {
         if (preg_match("/^\d{4}-\d{2}-\d{2}$/", $expect) !== 1) {
@@ -16,27 +20,27 @@ class HolidayTest extends TestCase
         self::assertEquals($expect, $actual->format('Y-m-d'), $message);
     }
 
-    public function testArmisticeDe1945()
+    public function testArmisticeDe1945(): void
     {
         self::assertDateEquals('2030-05-08', Holiday::armisticeDe1945(2030));
     }
 
-    public function testAscension()
+    public function testAscension(): void
     {
         self::assertDateEquals('2020-05-21', Holiday::ascension(2020));
     }
 
-    public function testLundiDePentecote()
+    public function testLundiDePentecote(): void
     {
         self::assertDateEquals('2020-06-01', Holiday::lundiDePentecote(2020));
     }
 
-    public function testPentecote()
+    public function testPentecote(): void
     {
         self::assertDateEquals('2020-05-31', Holiday::pentecote(2020));
     }
 
-    public function testEasterDay()
+    public function testEasterDay(): void
     {
         self::assertDateEquals('2020-04-12', Holiday::easterDay(2020));
         self::assertDateEquals('2021-04-04', Holiday::easterDay(2021));
@@ -51,42 +55,42 @@ class HolidayTest extends TestCase
         self::assertDateEquals('2030-04-21', Holiday::easterDay(2030));
     }
 
-    public function testBastilleDay()
+    public function testBastilleDay(): void
     {
         self::assertDateEquals('2030-07-14', Holiday::bastilleDay(2030));
     }
 
-    public function testMayDay()
+    public function testMayDay(): void
     {
         self::assertDateEquals('2030-05-01', Holiday::mayDay(2030));
     }
 
-    public function testAssomption()
+    public function testAssomption(): void
     {
         self::assertDateEquals('2020-08-15', Holiday::assomption(2020));
     }
 
-    public function testArmisticeDe1918()
+    public function testArmisticeDe1918(): void
     {
         self::assertDateEquals('2030-11-11', Holiday::armisticeDe1918(2030));
     }
 
-    public function testToussaint()
+    public function testToussaint(): void
     {
         self::assertDateEquals('2030-11-01', Holiday::tousSaint(2030));
     }
 
-    public function testChristmasDay()
+    public function testChristmasDay(): void
     {
         self::assertDateEquals('2030-12-25', Holiday::christmasDay(2030));
     }
 
-    public function testNewYearsDay()
+    public function testNewYearsDay(): void
     {
         self::assertDateEquals('2030-01-01', Holiday::newYearsDay(2030));
     }
 
-    public function testEasterMonday()
+    public function testEasterMonday(): void
     {
         self::assertDateEquals('2020-04-13', Holiday::easterMonday(2020));
         self::assertDateEquals('2021-04-05', Holiday::easterMonday(2021));

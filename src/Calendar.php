@@ -41,7 +41,7 @@ class Calendar
 
     /**
      * retourne le nombre de jour dans 1 mois
-     * @param $year
+     * @param int|\DateTimeInterface $year
      * @param int|null $month
      * @return int
      */
@@ -113,7 +113,7 @@ class Calendar
 
     /**
      * détermine si un jour est férié
-     * @param $year
+     * @param int|\DateTimeInterface $year
      * @param int|null $month
      * @param int|null $day
      * @return bool
@@ -127,7 +127,7 @@ class Calendar
                 . ' must be of type int or \DateTimeInterface'
             );
         }
-        if (is_int($year && ($month === null || $day === null))) {
+        if (is_int($year) && ($month === null || $day === null)) {
             throw new InvalidArgumentException(
                 'if the first argument passed to the method '
                 . __METHOD__
