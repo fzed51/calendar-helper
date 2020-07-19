@@ -31,8 +31,8 @@ return int
 ### Is a holidays
 
 ```php
-\CalendarHelper\Calendar::numberOfDays(2020,07,14);
-\CalendarHelper\Calendar::numberOfDays(new Date());
+\CalendarHelper\Calendar::isHolidays(2020,07,14);
+\CalendarHelper\Calendar::isHolidays(new Date());
 ```
 
 return boolean
