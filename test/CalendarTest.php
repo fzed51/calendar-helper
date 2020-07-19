@@ -1,8 +1,9 @@
 <?php /** @noinspection PhpParamsInspection */
 
-namespace Test\CalendarHelper;
+namespace test;
 
 use CalendarHelper\Calendar;
+use DateTime;
 use DateTimeImmutable;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
@@ -76,23 +77,30 @@ class CalendarTest extends TestCase
             7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31,
         ];
         foreach ($m as $mois => $jour) {
-            self::assertEquals(Calendar::numberOfDays(new \DateTime("2020-$mois-10")), $jour);
+            self::assertEquals(Calendar::numberOfDays(new DateTime("2020-$mois-10")), $jour);
         }
-        self::assertEquals(Calendar::numberOfDays(new \DateTime("2019-02-10")), 28);
+        self::assertEquals(Calendar::numberOfDays(new DateTime("2019-02-10")), 28);
     }
 
     public function test_isHolidays_withInt(): void
     {
-        $this->doesNotPerformAssertions();
+        self::assertTrue(Calendar::isHolidays(2020, 1, 1));
     }
 
     public function test_isHolidays_withDateTime(): void
     {
-        $this->doesNotPerformAssertions();
+        self::assertTrue(Calendar::isHolidays(new DateTime('2020-01-01')));
     }
 
-    public function test_holidaysList(): void
+    public function test_holidaysList_withInt(): void
     {
-        $this->doesNotPerformAssertions();
+        $list = Calendar::holidaysList(2020);
+        self::assertContainsOnlyInstancesOf(DateTimeImmutable::class, $list);
+    }
+
+    public function test_holidaysList_withDateTime(): void
+    {
+        $list = Calendar::holidaysList(new DateTime('2020-05-23'));
+        self::assertContainsOnlyInstancesOf(DateTimeImmutable::class, $list);
     }
 }
