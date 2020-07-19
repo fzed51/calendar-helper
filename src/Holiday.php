@@ -32,7 +32,7 @@ class Holiday
         return new DateTimeImmutable("$year-01-01");
     }
 
-    // Lundi de Pâques : lundi 13 avril 2020
+// Lundi de Pâques : lundi 13 avril 2020
     public static function easterDay($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
@@ -103,15 +103,49 @@ class Holiday
 // Jeudi de l'Ascension : jeudi 21 mai 2020
     public static function ascension($year): DateTimeImmutable
     {
+        if (!self::isIntOrDateTimeInterface($year)) {
+            throw new \InvalidArgumentException(
+                'The 1st argument passed to the method '
+                . __METHOD__
+                . ' must be of type int or \ DateTimeInterface'
+            );
+        }
+        if (is_a($year, \DateTimeInterface::class)) {
+            $year = (int)$year->format("Y");
+        }
+        return self::easterDay($year)->modify('+39 days');
     }
 
 // Lundi de Pentecôte : lundi 1er juin 2020
-    public static function Pentecote($year): DateTimeImmutable
+    public static function pentecote($year): DateTimeImmutable
     {
+        if (!self::isIntOrDateTimeInterface($year)) {
+            throw new \InvalidArgumentException(
+                'The 1st argument passed to the method '
+                . __METHOD__
+                . ' must be of type int or \ DateTimeInterface'
+            );
+        }
+        if (is_a($year, \DateTimeInterface::class)) {
+            $year = (int)$year->format("Y");
+        }
+        return self::easterDay($year)->modify('+49 days');
     }
 
     public static function lundiDePentecote($year): DateTimeImmutable
     {
+
+        if (!self::isIntOrDateTimeInterface($year)) {
+            throw new \InvalidArgumentException(
+                'The 1st argument passed to the method '
+                . __METHOD__
+                . ' must be of type int or \ DateTimeInterface'
+            );
+        }
+        if (is_a($year, \DateTimeInterface::class)) {
+            $year = (int)$year->format("Y");
+        }
+        return self::easterDay($year)->modify('+50 days');
     }
 
 // Fête nationale : mardi 14 juillet 2020
@@ -133,10 +167,21 @@ class Holiday
 // Assomption : samedi 15 août 2020
     public static function assomption($year): DateTimeImmutable
     {
+        if (!self::isIntOrDateTimeInterface($year)) {
+            throw new \InvalidArgumentException(
+                'The 1st argument passed to the method '
+                . __METHOD__
+                . ' must be of type int or \ DateTimeInterface'
+            );
+        }
+        if (is_a($year, \DateTimeInterface::class)) {
+            $year = (int)$year->format("Y");
+        }
+        return new DateTimeImmutable("$year-08-15");
     }
 
 // Toussaint : dimanche 1er novembre 2020
-    public static function toussaint($year): DateTimeImmutable
+    public static function tousSaint($year): DateTimeImmutable
     {
         if (!self::isIntOrDateTimeInterface($year)) {
             throw new \InvalidArgumentException(
