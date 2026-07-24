@@ -8,29 +8,29 @@ use PHPUnit\Framework\TestCase;
 
 class IsValidTypeTest extends TestCase
 {
-    public function test_isIntOrDateTimeInterface_withInt(): void
+    public function testIsIntOrDateTimeInterfaceWithInt(): void
     {
         self::assertTrue(IsValidTypeStub::check(2020));
     }
 
-    public function test_isIntOrDateTimeInterface_withDateTime(): void
+    public function testIsIntOrDateTimeInterfaceWithDateTime(): void
     {
         self::assertTrue(IsValidTypeStub::check(new DateTimeImmutable()));
     }
 
-    public function test_isIntOrDateTimeInterface_withBadArg_string(): void
+    public function testIsIntOrDateTimeInterfaceWithBadArgString(): void
     {
         /** @phpstan-ignore-next-line */
         self::assertFalse(IsValidTypeStub::check('Oops!...I Did It Again'));
     }
 
-    public function test_isIntOrDateTimeInterface_withBadArg_float(): void
+    public function testIsIntOrDateTimeInterfaceWithBadArgFloat(): void
     {
         /** @phpstan-ignore-next-line */
         self::assertFalse(IsValidTypeStub::check(9.999999));
     }
 
-    public function test_isIntOrDateTimeInterface_withBadArg_array(): void
+    public function testIsIntOrDateTimeInterfaceWithBadArgArray(): void
     {
         /** @phpstan-ignore-next-line */
         self::assertFalse(IsValidTypeStub::check([]));
