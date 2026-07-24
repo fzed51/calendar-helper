@@ -42,6 +42,8 @@ class IsValidTypeStub
     use IsValidType;
 
     /**
+     * Left untyped to let the test exercise invalid runtime values through the trait.
+     *
      * @param int|\DateTimeInterface $arg
      */
     public static function check($arg): bool

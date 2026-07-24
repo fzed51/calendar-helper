@@ -17,6 +17,6 @@ trait IsValidType
      */
     protected static function isIntOrDateTimeInterface($arg): bool
     {
-        return is_int($arg) || is_a($arg, \DateTimeInterface::class);
+        return is_int($arg) || $arg instanceof \DateTimeInterface;
     }
 }
