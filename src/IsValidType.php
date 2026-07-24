@@ -4,7 +4,7 @@
 namespace CalendarHelper;
 
 /**
- * Trait isValidType
+ * Trait IsValidType
  * @package CalendarHelper
  */
 trait IsValidType
