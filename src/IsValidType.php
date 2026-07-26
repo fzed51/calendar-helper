@@ -4,7 +4,7 @@
 namespace CalendarHelper;
 
 /**
- * Trait isValidType
+ * Trait IsValidType
  * @package CalendarHelper
  */
 trait IsValidType
@@ -17,9 +17,6 @@ trait IsValidType
      */
     protected static function isIntOrDateTimeInterface($arg): bool
     {
-        if (is_int($arg) || is_a($arg, \DateTimeInterface::class)) {
-            return true;
-        }
-        return false;
+        return is_int($arg) || (is_object($arg) ? $arg instanceof \DateTimeInterface : false);
     }
 }

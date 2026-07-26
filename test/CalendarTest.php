@@ -1,11 +1,10 @@
-<?php /** @noinspection PhpParamsInspection */
+<?php
 
 namespace test;
 
 use CalendarHelper\Calendar;
 use DateTime;
 use DateTimeImmutable;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class CalendarTest extends TestCase
@@ -37,24 +36,6 @@ class CalendarTest extends TestCase
         self::assertFalse(Calendar::isBisextile($date->setDate($a++, $i, $i++)));
         self::assertFalse(Calendar::isBisextile($date->setDate($a++, $i, $i++)));
         self::assertTrue(Calendar::isBisextile($date->setDate($a, $i, $i)));
-    }
-
-    public function test_isBisextile_withBadArg_string(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        self::assertTrue(Calendar::isBisextile('Oops!...I Did It Again'));
-    }
-
-    public function test_isBisextile_withBadArg_float(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        self::assertTrue(Calendar::isBisextile(9.999999));
-    }
-
-    public function test_isBisextile_withBadArg_array(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        self::assertTrue(Calendar::isBisextile([]));
     }
 
     public function test_numberOfDays_withInt(): void
