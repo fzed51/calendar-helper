@@ -9,5 +9,6 @@
 
 # PHP
 php_errors.log
+.phpunit.result.cache
 
 # PROJECT
